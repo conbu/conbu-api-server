@@ -20,20 +20,34 @@ class CONBU::Zabbix
     @auth = auth
   end
 
+  def user_get
+    params = {
+      'output' => 'extend'
+    }
+    invoke('user.get', params)
+  end
+
   def invoke(method, params, login = true)
     if @auth.nil? and login then
       user_login
     end
     @id += 1
-    params['id'] = @id
+    params = {
+      'jsonrpc' => '2.0',
+      'method' => method,
+      'params' => params,
+      'auth' => @auth,
+      'id' => @id
+    }
+    p params
     @client.invoke(method.to_s, params)
   end
 end
 
 
 if __FILE__ == $0 then
-  z = CONBU::Zabbix.new('takano32', 'XXXXXX')
-  puts z.user_login
+  z = CONBU::Zabbix.new('takano32', 'secret')
+  puts z.user_get
 end
 
 
