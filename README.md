@@ -4,7 +4,7 @@
 ## End Points
 
 ```
-/v1/:location/associations/:band
+/v1/associations/:location/:band
 ```
 
 location is AP name or location name.
@@ -16,14 +16,14 @@ band is '2_4GHz', '5_0GHz' or 'both'.
 for example
 
 ```
-/v1/all/associations/both
+/v1/associations/all/both
 ```
 
 ```
-/v1/ap102/associations/2_4GHz
+/v1/associations/ap102/2_4GHz
 ```
 
 ```
-/v1/entrance/5_0GHz
+/v1/associations/entrance/5_0GHz
 ```
 
