@@ -19,10 +19,21 @@ $zabbix = ZabbixApi.connect(
 )
 
 get '/' do
+  redirect '/'
+end
+
+get '/version' do
   version = $zabbix.query(
     :method => "apiinfo.version",
     :params => {}
   )
   version
+end
+
+get '/v1/:place/associations/:band' do
+  place = params[:place]
+  band  = params[:band]
+  p place
+  p band
 end
 
