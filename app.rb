@@ -3,41 +3,22 @@
 
 require 'sinatra'
 require 'pit'
-require 'zabbixapi'
 require 'json'
 
 require_relative './place/ten'
 $place = @place
-
-$zabbix_config = Pit.get('zabbix',
-                  :require => {
-  user: 'zabbix username',
-  password: 'zabbix password',
-})
-
-$zabbix = ZabbixApi.connect(
-  :url => 'http://zabbix.conbu.net/api_jsonrpc.php',
-  :user => $zabbix_config[:user],
-  :password => $zabbix_config[:password]
-)
-
-$associations = {}
 
 get '/' do
   redirect '/v1/version'
 end
 
 get '/v1/version' do
-  version = $zabbix.query(
-    :method => "apiinfo.version",
-    :params => {}
-  )
   version = '1.0.0'
 end
 
 get '/v1/:place/associations/' do
   place = params[:place]
-  redirect "v1/#{place}/associations/all"
+  redirect "v1/#{place}/associations/both"
 end
 
 get '/v1/:place/associations/:band' do
@@ -56,7 +37,7 @@ get '/v1/:place/associations/:band' do
     b = '2.4GHz'
   when /5(_|\.)?0[Gg][Hh][Zz]/
     b = '5GHz'
-  when 'all'
+  when 'both'
   else
     halt 404
   end
@@ -70,29 +51,28 @@ error 404 do
 end
 
 def associations(place, band)
-  "#{place}: #{band}"
-  items = $zabbix.items.get(output: 'extend')
-  items.each do |item|
-    next unless item['name'] =~ /(ap[0-9]{3})/
-    next unless item['name'] =~ /(ap[0-9]{3}).+((2\.4|5)GHz)/
-    ap = $1
-    band = $2.sub('.', '_')
-    $associations[ap] = {} if $associations[ap].nil?
-    $associations[ap][band] = item['lastvalue'].to_i
-  end
+  require 'drb/drb'
+  uri = 'druby://localhost:8282'
+  DRb.start_service
+  zabbix = DRbObject.new_with_uri(uri)
+  associations = zabbix.get_associations
 
   result = 0
   places = $place[:all]
   unless $place.keys.include? place.to_sym
-    halt 404 if $associations[place.to_s].nil?
+    halt 404 if associations[place.to_s].nil?
     places << place.to_sym
   else
     places = $place[place.to_sym]
   end
   places.each do |ap|
     ap = ap.to_s
-    result += $associations[ap]['2_4GHz'] if band == '2.4GHz'
-    result += $associations[ap]['5GHz']   if band == '5GHz'
+    if band == 'both' or band == '2.4GHz' then
+      result += associations[ap]['2_4GHz']
+    end
+    if band == 'both' or band == '5GHz' then
+      result += associations[ap]['5GHz']
+    end
   end
   result
 end
