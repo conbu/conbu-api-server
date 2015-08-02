@@ -4,9 +4,10 @@
 require 'sinatra'
 require 'pit'
 require 'zabbixapi'
+require 'json'
 
 require_relative './place/ten'
-p @place
+$place = @place
 
 $zabbix_config = Pit.get('zabbix',
                   :require => {
@@ -19,6 +20,8 @@ $zabbix = ZabbixApi.connect(
   :user => $zabbix_config[:user],
   :password => $zabbix_config[:password]
 )
+
+$associations = {}
 
 get '/' do
   redirect '/v1/version'
@@ -34,14 +37,14 @@ end
 
 get '/v1/:place/associations/' do
   place = params[:place]
-  redirect "v1/#{place}/associations/total"
+  redirect "v1/#{place}/associations/all"
 end
 
 get '/v1/:place/associations/:band' do
   place = params[:place]
   band  = params[:band]
   case place
-  when 'total'
+  when 'all'
   when /ap[0-9]{3}/
   when 'entrance', 'unice', 'unit', 'saloon'
   else
@@ -53,11 +56,12 @@ get '/v1/:place/associations/:band' do
     b = '2.4GHz'
   when /5(_|\.)?0[Gg][Hh][Zz]/
     b = '5GHz'
-  when 'total'
+  when 'all'
   else
     halt 404
   end
-  associations(place, b)
+  content_type :json
+  {'associations' => associations(place, b)}.to_json
 end
 
 error 404 do
@@ -66,5 +70,22 @@ end
 
 def associations(place, band)
   "#{place}: #{band}"
+  items = $zabbix.items.get(output: 'extend')
+  items.each do |item|
+    next unless item['name'] =~ /(ap[0-9]{3})/
+    next unless item['name'] =~ /(ap[0-9]{3}).+((2\.4|5)GHz)/
+    ap = $1
+    band = $2.sub('.', '_')
+    $associations[ap] = {} if $associations[ap].nil?
+    $associations[ap][band] = item['lastvalue'].to_i
+  end
+
+  result = 0
+  $place[place.to_sym].each do |ap|
+    ap = ap.to_s
+    result += $associations[ap]['2_4GHz']
+    result += $associations[ap]['5GHz']
+  end
+  result
 end
 

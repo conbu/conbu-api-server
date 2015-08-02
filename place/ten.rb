@@ -26,6 +26,6 @@
   :ap112,
 ]
 
-@place[:total] = @place[:entrance] + @place[:unice] + @place[:unit] + @place[:saloon]
-@place[:total] = @place[:total].sort
+@place[:all] = @place[:entrance] + @place[:unice] + @place[:unit] + @place[:saloon]
+@place[:all] = @place[:all].sort
 
