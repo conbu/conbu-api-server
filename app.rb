@@ -16,12 +16,16 @@ get '/v1/version' do
   version = '1.0.0'
 end
 
-get '/v1/:place/associations/' do
-  place = params[:place]
-  redirect "v1/#{place}/associations/both"
+get '/v1/associations/' do
+  redirect '/v1/associations/all/'
 end
 
-get '/v1/:place/associations/:band' do
+get '/v1/associations/:place' do
+  place = params[:place]
+  redirect "v1/associations/#{place}/both"
+end
+
+get '/v1/associations/:place/:band' do
   place = params[:place]
   band  = params[:band]
   case place
