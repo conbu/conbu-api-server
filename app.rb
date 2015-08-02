@@ -81,7 +81,10 @@ def associations(place, band)
   end
 
   result = 0
-  $place[place.to_sym].each do |ap|
+  unless $place.keys.include? place.to_sym
+    halt 404 if $associations[place.to_s].nil?
+  end
+  $place[:all].each do |ap|
     ap = ap.to_s
     result += $associations[ap]['2_4GHz']
     result += $associations[ap]['5GHz']
