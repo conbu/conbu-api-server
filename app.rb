@@ -60,6 +60,7 @@ get '/v1/:place/associations/:band' do
   else
     halt 404
   end
+  response.headers['Access-Control-Allow-Origin'] = '*'
   content_type :json
   {'associations' => associations(place, b)}.to_json
 end
