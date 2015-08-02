@@ -82,9 +82,10 @@ def associations(place, band)
   end
 
   result = 0
-  places = []
+  places = $place[:all]
   unless $place.keys.include? place.to_sym
     halt 404 if $associations[place.to_s].nil?
+    places << place.to_sym
   else
     places = $place[place.to_sym]
   end
