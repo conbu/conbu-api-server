@@ -65,7 +65,7 @@ def associations(place, band)
   places = $place[:all]
   unless $place.keys.include? place.to_sym
     halt 404 if associations[place.to_s].nil?
-    places << place.to_sym
+    places = [place.to_sym]
   else
     places = $place[place.to_sym]
   end
