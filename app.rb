@@ -42,6 +42,7 @@ get '/v1/associations/:place/:band' do
   when /5(_|\.)?0[Gg][Hh][Zz]/
     b = '5GHz'
   when 'both'
+    b = 'both'
   else
     halt 404
   end
