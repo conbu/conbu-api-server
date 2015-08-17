@@ -16,13 +16,13 @@ get '/v1/version' do
   version = '1.0.0'
 end
 
-get '/v1/associations/' do
-  redirect '/v1/associations/all/'
+get '/v1/associations' do
+  redirect '/v1/associations/all'
 end
 
 get '/v1/associations/:place' do
   place = params[:place]
-  redirect "v1/associations/#{place}/both"
+  redirect "/v1/associations/#{place}/both"
 end
 
 get '/v1/associations/:place/:band' do
@@ -48,6 +48,7 @@ get '/v1/associations/:place/:band' do
   end
   response.headers['Access-Control-Allow-Origin'] = '*'
   content_type :json
+  # {'associations' => dummy_associations(place, b)}.to_json
   {'associations' => associations(place, b)}.to_json
 end
 
