@@ -27,7 +27,7 @@ get '/v1/associations/:place/:band' do
   band  = params[:band]
   case place
   when 'all'
-  when 'trac_a', 'trac_b', 'trac_c', 'trac_d','trac_e'
+  when 'track_a', 'track_b', 'track_c', 'track_d','track_e'
   else
     halt 404
   end
@@ -54,15 +54,15 @@ end
 def dummy_associations(place, band)
   # 各部屋の Max キャパシティ
   case place
-    when "trac_a"
+    when "track_a"
       max = 1000
-    when "trac_b"
+    when "track_b"
       max = 100
-    when "trac_c"
+    when "track_c"
       max = 120
-    when "trac_d"
+    when "track_d"
       max = 288
-    when "trac_e"
+    when "track_e"
       max = 288
     when "all"
       max = 1796
