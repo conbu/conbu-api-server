@@ -13,13 +13,13 @@ get '/v1/version' do
   version = '1.0.0'
 end
 
-get '/v1/associations/' do
-  redirect '/v1/associations/all/'
+get '/v1/associations' do
+  redirect '/v1/associations/all'
 end
 
 get '/v1/associations/:place' do
   place = params[:place]
-  redirect "v1/associations/#{place}/both"
+  redirect "/v1/associations/#{place}/both"
 end
 
 get '/v1/associations/:place/:band' do
