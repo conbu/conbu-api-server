@@ -7,8 +7,8 @@ require 'sinatra'
 require 'pit'
 require 'json'
 
-require_relative './place/yapc2015'
-$place = @place
+require_relative './location/yapc2015'
+$location = @location
 
 get '/' do
   redirect '/v1/version'
@@ -22,18 +22,18 @@ get '/v1/associations' do
   redirect '/v1/associations/all'
 end
 
-get '/v1/associations/:place' do
-  place = params[:place]
-  redirect "/v1/associations/#{place}/both"
+get '/v1/associations/:location' do
+  location = params[:location]
+  redirect "/v1/associations/#{location}/both"
 end
 
-get '/v1/associations/:place/:band' do
-  place = params[:place]
+get '/v1/associations/:location/:band' do
+  location = params[:location]
   band  = params[:band]
-  case place
+  case location
   when 'all'
   when /ap[0-9]{3}/
-  when *$place.keys.map(&:to_s)
+  when *$location.keys.map(&:to_s)
   else
     halt 404
   end
@@ -50,15 +50,15 @@ get '/v1/associations/:place/:band' do
   end
   response.headers['Access-Control-Allow-Origin'] = '*'
   content_type :json
-  # {'associations' => dummy_associations(place, b)}.to_json
-  {'associations' => associations(place, b)}.to_json
+  # {'associations' => dummy_associations(location, b)}.to_json
+  {'associations' => associations(location, b)}.to_json
 end
 
 error 404 do
   '404 endpoint not found.'
 end
 
-def associations(place, band)
+def associations(location, band)
   require 'drb/drb'
   uri = 'druby://localhost:8282'
   DRb.start_service
@@ -66,15 +66,16 @@ def associations(place, band)
   associations = zabbix.get_associations
 
   result = 0
-  places = $place[:all]
-  unless $place.keys.include? place.to_sym
-    halt 404 if associations[place.to_s].nil?
-    places = [place.to_sym]
+  locations = $location[:all]
+  unless $location.keys.include? location.to_sym
+    halt 404 if associations[location.to_s].nil?
+    locations = [location.to_sym]
   else
-    places = $place[place.to_sym]
+    locations = $location[location.to_sym]
   end
-  places.each do |ap|
+  locations.each do |ap|
     ap = ap.to_s
+    next unless associations.has_key? ap
     if band == 'both' or band == '2.4GHz' then
       result += associations[ap]['2_4GHz']
     end
