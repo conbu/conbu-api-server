@@ -7,7 +7,7 @@ require 'sinatra'
 require 'pit'
 require 'json'
 
-require_relative './place/ten'
+require_relative './place/yapc2015'
 $place = @place
 
 get '/' do
@@ -33,7 +33,7 @@ get '/v1/associations/:place/:band' do
   case place
   when 'all'
   when /ap[0-9]{3}/
-  when * @place.keys
+  when *$place.keys.map(&:to_s)
   else
     halt 404
   end
