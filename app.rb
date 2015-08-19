@@ -1,4 +1,6 @@
 #!/usr/bin/env ruby
+# vim: set et sts=2 sw=2 ts=2 fdm=marker ft=ruby :
+# author: TAKANO Mitsuhiro a.k.a. @takano32
 #
 
 require 'sinatra'
@@ -31,7 +33,7 @@ get '/v1/associations/:place/:band' do
   case place
   when 'all'
   when /ap[0-9]{3}/
-  when 'entrance', 'unice', 'unit', 'saloon'
+  when * @place.keys
   else
     halt 404
   end

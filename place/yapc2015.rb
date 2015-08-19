@@ -1,77 +1,62 @@
-
+# vim: set et sts=2 sw=2 ts=2 fdm=marker ft=ruby :
+# author: TAKANO Mitsuhiro a.k.a. @takano32
+#
 
 @place = {}
-@place[:entrance] = [
-  :ap101,
-]
-
-@place[:unice] = [
-  :ap102,
-  :ap103,
-  :ap104,
-]
-
-@place[:unit] = [
-  :ap001,
+@place[:track_a] = [
+  :ap017,
+  :ap018,
+  :ap019,
+  :ap020,
   :ap105,
   :ap106,
   :ap107,
   :ap108,
   :ap109,
-]
-
-@place[:saloon] = [
   :ap110,
   :ap111,
   :ap112,
 ]
 
-@place[:all] = @place[:entrance] + @place[:unice] + @place[:unit] + @place[:saloon]
+@place[:track_b] = [
+  :ap009,
+  :ap010,
+  :ap103,
+]
+
+@place[:track_c] = [
+  :ap014,
+  :ap104,
+]
+
+@place[:track_d] = [
+  :ap001,
+  :ap002,
+  :ap101,
+]
+
+@place[:track_e] = [
+  :ap003,
+  :ap004,
+  :ap102,
+]
+
+@place[:all] = [
+  # 6F
+  # # Reception
+  :ap005,
+  # # Lobby
+  :ap006,
+  # 7F
+  # # Reception
+  :ap007,
+  :ap008,
+  # # Lobby1
+  :ap011,
+  :ap012,
+  # # Lobby2
+  :ap015,
+  :ap016,
+] + @place[:track_a] + @place[:track_b] + @place[:track_c] + @place[:track_d] + @place[:track_e]
+
 @place[:all] = @place[:all].sort
-
-__END__
-YAPC:
- 6F:
-  Reception:
-   AP-005
-  Lobby:
-   AP-006
-  D Track:
-   AP-001
-   AP-002
-   AP-101
-  E Track:
-   AP-003
-   AP-004
-   AP-102
- 7F:
-  Reception:
-   AP-007
-   AP-008
-  Lobby1:
-   AP-011
-   AP-012
-  Lobby2:
-   AP-015
-   AP-016
-  A Track:
-   AP-017
-   AP-018
-   AP-019
-   AP-020
-   AP-105
-   AP-106
-   AP-107
-   AP-108
-   AP-109
-   AP-110
-   AP-111
-   AP-112
-  B Track:
-   AP-009
-   AP-010
-   AP-103
-  C Track:
-   AP-014
-   AP-104
-
