@@ -1,32 +1,23 @@
 
-
 @place = {}
-@place[:entrance] = [
-  :ap101,
+@place[:track_a] = [
 ]
 
-@place[:unice] = [
-  :ap102,
-  :ap103,
-  :ap104,
+@place[:track_b] = [
 ]
 
-@place[:unit] = [
-  :ap001,
-  :ap105,
-  :ap106,
-  :ap107,
-  :ap108,
-  :ap109,
+@place[:track_c] = [
 ]
 
-@place[:saloon] = [
-  :ap110,
-  :ap111,
-  :ap112,
+@place[:track_d] = [
 ]
 
-@place[:all] = @place[:entrance] + @place[:unice] + @place[:unit] + @place[:saloon]
+@place[:track_e] = [
+]
+
+@place[:all] = [
+] + @place[:track_a] + @place[:track_b] + @place[:track_c] + @place[:track_d] + @place[:track_e]
+
 @place[:all] = @place[:all].sort
 
 __END__
@@ -37,9 +28,6 @@ YAPC:
   Lobby:
    AP-006
   D Track:
-   AP-001
-   AP-002
-   AP-101
   E Track:
    AP-003
    AP-004
