@@ -41,27 +41,46 @@
     max: 122 * 1.0
   }]
   var track_d = [{
-    place: "track_d",
-    points: [{x: 630, y: 350}, {x: 760, y: 440}, {x: 869, y: 350}],
-    value: 288,
-    max: 288 * 0.6
-  }]
+      place: "ap001",
+      points: [{x: 630, y: 350}],
+      value: 288,
+      max: 288 * 0.6 / 3
+    },{
+      place: "ap101",
+      points: [{x: 760, y: 440}],
+      value: 288,
+      max: 288 * 0.6 / 3
+    },{
+      place: "ap002",
+      points: [{x: 869, y: 350}],
+      value: 288,
+      max: 288 * 0.6 / 3
+    }];
   var track_e = [{
-    place: "track_e",
-    points: [{x: 630, y: 530}, {x: 770, y: 610}, {x: 890, y: 520}],
-    value: 288,
-    max: 288 * 0.6
-  }]
+      place: "ap003",
+      points: [{x: 630, y: 530}],
+      value: 288,
+      max: 288 * 0.6 / 3
+    },{
+      place: "ap102",
+      points: [{x: 770, y: 610}],
+      value: 288,
+      max: 288 * 0.6 / 3
+    },{
+      place: "ap004",
+      points: [{x: 890, y: 520}],
+      value: 288,
+      max: 288 * 0.6 / 3
+    }]
   var reception = [{
       place: "ap005",
       points: [{x: 990, y: 390}],
       max: 50
-    },
-    {
+    },{
       place: "ap006",
       points: [{x: 990, y: 550}],
       max: 50
-  }]
+    }];
 
   function getData(track) {
     var dataPoints = [];
