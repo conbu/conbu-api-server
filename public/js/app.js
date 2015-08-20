@@ -15,8 +15,8 @@
     minOpacity: .3,
     blur: 1,
     gradient: {
-      '.5': 'blue',
-      '.7': 'red',
+      '.2': 'blue',
+      '.5': 'red',
       '.95': 'white'
     }
   };
@@ -54,7 +54,7 @@
 
   function getData(track) {
     var dataPoints = [];
-    associations = getAssociations(track.place)
+    var associations = getAssociations(track.place)
     track.points.forEach(function(point) {
       var clonedDataPoint = (JSON.parse(JSON.stringify(_dataPoint)));
       clonedDataPoint.x = point.x;
@@ -78,7 +78,7 @@
     } else if (window.ActiveXObject) { // IE 6 and older
         httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
     }
-    httpRequest.open('GET', "http://dev-api.conbu.net/v1/associations/" + place + "/both", false);
+    httpRequest.open('GET', "http://api.conbu.net/v1/associations/" + place + "/both", false);
     httpRequest.send();
     if (httpRequest.status === 200) {
       associations = JSON.parse(httpRequest.responseText).associations;
@@ -96,8 +96,7 @@
     heatmapInstance_c.setData({data:[]}).setData(getData(track_c));
     heatmapInstance_d.setData({data:[]}).setData(getData(track_d));
     heatmapInstance_e.setData({data:[]}).setData(getData(track_e));
-    console.log(heatmapInstance_a.getData());
-    setTimeout(lender,2000);
+    setTimeout(lender, 10000);
   }
 
   window.onload = function() {
