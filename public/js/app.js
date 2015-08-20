@@ -15,9 +15,9 @@
     minOpacity: .3,
     blur: 1,
     gradient: {
-      '.2': 'blue',
+      '.3': 'blue',
       '.5': 'red',
-      '.95': 'white'
+      '.85': 'white'
     }
   };
 
@@ -25,31 +25,31 @@
     place: "track_a",
     points: [{x: 700, y: 1580}, {x: 900, y: 1530}, {x: 800, y: 1530}, {x: 870, y: 1470}, {x: 730, y: 1470}, {x: 880, y: 1650}, {x: 850, y: 1650}, {x: 750, y: 1660}],
     value: 1000,
-    max: 1000 * 1.3
+    max: 1000 * 1.0
   }
   var track_b = {
     place: "track_b",
     points: [{x: 1100, y: 1120}, {x: 1200, y: 1120}, {x: 1150, y: 1150}],
     value: 100,
-    max: 100 * 1.3
+    max: 100 * 1.0
   }
   var track_c = {
     place: "track_c",
     points: [{x: 1100, y: 2030}, {x: 1200, y: 1980}, {x: 1150, y: 2000}],
     value: 122,
-    max: 122 * 1.3
+    max: 122 * 1.0
   }
   var track_d = {
     place: "track_d",
     points: [{x: 630, y: 350}, {x: 760, y: 440}, {x: 869, y: 350}],
     value: 288,
-    max: 288 * 1.3
+    max: 288 * 0.6
   }
   var track_e = {
     place: "track_e",
     points: [{x: 630, y: 530}, {x: 770, y: 610}, {x: 890, y: 520}],
     value: 288,
-    max: 288 * 1.3
+    max: 288 * 0.6
   }
 
   function getData(track) {
