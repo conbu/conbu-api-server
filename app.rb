@@ -10,6 +10,11 @@ require 'json'
 require_relative './location/yapc2015'
 $location = @location
 
+require 'drb/drb'
+uri = 'druby://localhost:8282'
+DRb.start_service
+$zabbix = DRbObject.new_with_uri(uri)
+
 get '/' do
   redirect '/v1/version'
 end
@@ -59,11 +64,7 @@ error 404 do
 end
 
 def associations(location, band)
-  require 'drb/drb'
-  uri = 'druby://localhost:8282'
-  DRb.start_service
-  zabbix = DRbObject.new_with_uri(uri)
-  associations = zabbix.get_associations
+  associations = $zabbix.get_associations
 
   result = 0
   locations = $location[:all]
