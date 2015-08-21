@@ -4,59 +4,62 @@
 
 @location = {}
 @location[:track_a] = [
-  :ap017,
-  :ap018,
-  :ap019,
-  :ap020,
-  :ap105,
-  :ap106,
-  :ap107,
-  :ap108,
-  :ap109,
-  :ap110,
-  :ap111,
-  :ap112,
+  :"AP-017",
+  :"AP-018",
+  :"AP-019",
+  :"AP-020",
+  :"AP-105",
+  :"AP-106",
+  :"AP-107",
+  :"AP-108",
+  :"AP-109",
+  :"AP-110",
+  :"AP-111",
+  :"AP-112",
 ]
 
 @location[:track_b] = [
-  :ap009,
-  :ap010,
-  :ap103,
+  :"AP-009",
+  :"AP-010",
+  :"AP-103",
 ]
 
 @location[:track_c] = [
-  :ap014,
-  :ap104,
+  :"AP-014",
+  :"AP-104",
+  :"AP-134",
 ]
 
 @location[:track_d] = [
-  :ap001,
-  :ap002,
-  :ap101,
+  :"AP-001",
+  :"AP-002",
+  :"AP-101",
+  :"AP-023",
 ]
 
 @location[:track_e] = [
-  :ap003,
-  :ap004,
-  :ap102,
+  :"AP-003",
+  :"AP-004",
+  :"AP-102",
+  :"AP-022",
 ]
 
 @location[:all] = [
   # 6F
   # # Reception
-  :ap005,
+  :"AP-005",
   # # Lobby
-  :ap006,
+  :"AP-006",
   # 7F
   # # Reception
-  :ap007,
-  :ap008,
+  :"AP-007",
+  :"AP-008",
   # # Lobby1
-  :ap011,
-  :ap012,
+  :"AP-011",
+  :"AP-012",
   # # Lobby2
-  :ap015,
-  :ap016,
+  :"AP-015",
+  :"AP-016",
 ] + @location[:track_a] + @location[:track_b] + @location[:track_c] + @location[:track_d] + @location[:track_e]
 
 @location[:all] = @location[:all].sort
