@@ -37,7 +37,7 @@ get '/v1/associations/:location/:band' do
   band  = params[:band]
   case location
   when 'all'
-  when /ap[0-9]{3}/
+  when /AP-[0-9]{3}/
   when *$location.keys.map(&:to_s)
   else
     halt 404
