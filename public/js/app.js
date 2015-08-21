@@ -19,7 +19,7 @@
   var track_a = [{
       place: "AP-017",
       points: [{x: 700, y: 1320}],
-      max: 1000 * 2.0 / 12
+      max: 1000 * 1.0 / 12
     },{
       place: "AP-018",
       points: [{x: 850, y: 1320}],
@@ -57,7 +57,7 @@
   var track_b = [{
       place: "AP-010",
       points: [{x: 1090, y: 1130}],
-      max: 100 * 2.0 / 3
+      max: 100 * 1.0 / 3
     },{
       place: "AP-103",
       points: [{x: 1150, y: 1090}],
@@ -68,7 +68,7 @@
   var track_c = [{
       place: "AP-014",
       points: [{x: 1150, y: 2000}],
-      max: 122 * 2.0 / 3
+      max: 122 * 1.0 / 3
     },{
       place: "AP-104",
       points: [{x: 1250, y: 1960}]
@@ -79,7 +79,7 @@
   var track_d = [{
       place: "AP-001",
       points: [{x: 630, y: 350}],
-      max: 288 * 2.0 / 3
+      max: 288 * 1.0 / 3
     },{
       place: "AP-101",
       points: [{x: 760, y: 440}],
@@ -90,7 +90,7 @@
   var track_e = [{
       place: "AP-003",
       points: [{x: 630, y: 530}],
-      max: 288 * 2.0 / 3
+      max: 288 * 1.0 / 3
     },{
       place: "AP-102",
       points: [{x: 770, y: 610}],
@@ -178,15 +178,15 @@
   function start() {
 
     var dataPoints = [];
-    dataPoints = dataPoints.concat(dataPoints, getDataPoints(track_a));
-    dataPoints = dataPoints.concat(dataPoints, getDataPoints(track_b));
-    dataPoints = dataPoints.concat(dataPoints, getDataPoints(track_c));
-    dataPoints = dataPoints.concat(dataPoints, getDataPoints(track_d));
-    dataPoints = dataPoints.concat(dataPoints, getDataPoints(track_e));
-    dataPoints = dataPoints.concat(dataPoints, getDataPoints(reception_6f));
-    dataPoints = dataPoints.concat(dataPoints, getDataPoints(reception_7f));
-    dataPoints = dataPoints.concat(dataPoints, getDataPoints(lobby_1));
-    dataPoints = dataPoints.concat(dataPoints, getDataPoints(lobby_2));
+    dataPoints = dataPoints.concat(getDataPoints(track_a));
+    dataPoints = dataPoints.concat(getDataPoints(track_b));
+    dataPoints = dataPoints.concat(getDataPoints(track_c));
+    dataPoints = dataPoints.concat(getDataPoints(track_d));
+    dataPoints = dataPoints.concat(getDataPoints(track_e));
+    dataPoints = dataPoints.concat(getDataPoints(reception_6f));
+    dataPoints = dataPoints.concat(getDataPoints(reception_7f));
+    dataPoints = dataPoints.concat(getDataPoints(lobby_1));
+    dataPoints = dataPoints.concat(getDataPoints(lobby_2));
     var data = {
       max: 1000,
       min: 0,
