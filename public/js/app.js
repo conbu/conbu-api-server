@@ -73,7 +73,7 @@
       place: "AP-104",
       points: [{x: 1250, y: 1960}]
     },{
-      place: "AP-134",
+      place: "AP-021",
       points: [{x: 1050, y: 1930}]
     }];
   var track_d = [{
