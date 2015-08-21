@@ -85,7 +85,7 @@
   var track_d = [{
       place: "ap001",
       points: [{x: 630, y: 350}],
-      max: 288 * 0.6 / 3
+      max: 288 * 1.0 / 3
     },{
       place: "ap101",
       points: [{x: 760, y: 440}],
@@ -96,7 +96,7 @@
   var track_e = [{
       place: "ap003",
       points: [{x: 630, y: 530}],
-      max: 288 * 0.6 / 3
+      max: 288 * 1.0 / 3
     },{
       place: "ap102",
       points: [{x: 770, y: 610}],
@@ -175,6 +175,17 @@
     return associations;
   }
 
+  function updateTime() {
+    var date = new Date();
+    var clock = date.getFullYear() + "-"
+        + ("0" + (date.getMonth() + 1)).slice(-2) + "-"
+        + ("0" + date.getDate()).slice(-2) + " "
+        + ("0" + date.getHours()).slice(-2) + ":"
+        + ("0" + date.getMinutes()).slice(-2) + ":"
+        + ("0" + date.getSeconds()).slice(-2);
+    document.getElementById("time").innerHTML = clock;
+  }
+
   function start() {
 
     var dataPoints = [];
@@ -187,6 +198,9 @@
     heatmapInstance_reception_7f.setData(getData(reception_7f));
     heatmapInstance_lobby_1.setData(getData(lobby_1));
     heatmapInstance_lobby_2.setData(getData(lobby_2));
+
+    updateTime();
+
     setTimeout(start, 10000);
   }
 
