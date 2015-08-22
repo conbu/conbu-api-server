@@ -22,34 +22,34 @@
       max: 1000 * 1.0 / 12
     },{
       place: "AP-018",
-      points: [{x: 850, y: 1320}],
+      points: [{x: 850, y: 1320}]
     },{
       place: "AP-105",
-      points: [{x: 570, y: 1440}],
+      points: [{x: 570, y: 1440}]
     },{
       place: "AP-107",
-      points: [{x: 750, y: 1440}],
+      points: [{x: 750, y: 1440}]
     },{
       place: "AP-111",
-      points: [{x: 950, y: 1430}],
+      points: [{x: 950, y: 1430}]
     },{
       place: "AP-108",
-      points: [{x: 700, y: 1520}],
+      points: [{x: 700, y: 1520}]
     },{
       place: "AP-110",
-      points: [{x: 880, y: 1520}],
+      points: [{x: 880, y: 1520}]
     },{
       place: "AP-106",
-      points: [{x: 570, y: 1600}],
+      points: [{x: 570, y: 1600}]
     },{
       place: "AP-109",
-      points: [{x: 750, y: 1600}],
+      points: [{x: 750, y: 1600}]
     },{
       place: "AP-112",
-      points: [{x: 950, y: 1600}],
+      points: [{x: 950, y: 1600}]
     },{
       place: "AP-019",
-      points: [{x: 700, y: 1700}],
+      points: [{x: 700, y: 1700}]
     },{
       place: "AP-020",
       points: [{x: 850, y: 1700}]
@@ -60,7 +60,7 @@
       max: 100 * 1.0 / 3
     },{
       place: "AP-103",
-      points: [{x: 1150, y: 1090}],
+      points: [{x: 1150, y: 1090}]
     },{
       place: "AP-009",
       points: [{x: 1210, y: 1130}]
@@ -74,29 +74,35 @@
       points: [{x: 1250, y: 1960}]
     },{
       place: "AP-021",
-      points: [{x: 1050, y: 1930}]
+      points: [{x: 1080, y: 1930}]
     }];
   var track_d = [{
       place: "AP-001",
       points: [{x: 630, y: 350}],
-      max: 288 * 1.0 / 3
+      max: 288 * 1.0 / 4
     },{
       place: "AP-101",
-      points: [{x: 760, y: 440}],
+      points: [{x: 800, y: 440}],
     },{
       place: "AP-002",
-      points: [{x: 869, y: 350}]
+      points: [{x: 900, y: 350}]
+    },{
+      place: "AP-023",
+      points: [{x: 630, y: 440}]
     }];
   var track_e = [{
       place: "AP-003",
-      points: [{x: 630, y: 530}],
-      max: 288 * 1.0 / 3
+      points: [{x: 630, y: 620}],
+      max: 288 * 1.0 / 4
     },{
       place: "AP-102",
-      points: [{x: 770, y: 610}],
+      points: [{x: 790, y: 620}]
     },{
       place: "AP-004",
-      points: [{x: 890, y: 520}]
+      points: [{x: 900, y: 520}]
+    },{
+      place: "AP-022",
+      points: [{x: 760, y: 520}]
     }];
   var reception_6f = [{
       place: "AP-005",
@@ -112,7 +118,7 @@
       max: 80 / 2
     },{
       place: "AP-008",
-      points: [{x: 1220, y: 1620}],
+      points: [{x: 1220, y: 1620}]
     }];
   var lobby_1 = [{
       place: "AP-012",
@@ -120,7 +126,7 @@
       max: 80 / 2
     },{
       place: "AP-011",
-      points: [{x: 920, y: 1170}],
+      points: [{x: 920, y: 1170}]
     }];
   var lobby_2 = [{
       place: "AP-016",
@@ -128,7 +134,7 @@
       max: 80 / 2
     },{
       place: "AP-015",
-      points: [{x: 920, y: 1890}],
+      points: [{x: 920, y: 1890}]
     }];
 
   function getDataPoints(track) {
