@@ -7,7 +7,7 @@ require 'sinatra'
 require 'pit'
 require 'json'
 
-require_relative './location/yapc2015'
+require_relative './location/phpcon2015'
 $location = @location
 
 require 'drb/drb'
