@@ -2,11 +2,11 @@
 @location[:hall] = [
   :"APL1",
   :"APL2",
-  :"APL3",
-  :"APL4",
-  :"APL5",
-  :"APL6",
-  :"APL7",
+  :"APR3",
+  :"APR4",
+  :"APR5",
+  :"APR6",
+  :"APR7",
 ]
 
 @location[:all] = @location[:hall]
