@@ -59,6 +59,27 @@ get '/v1/associations/:location/:band' do
   {'associations' => associations(location, b)}.to_json
 end
 
+get '/v1/trafics' do
+  redirect '/v1/trafics/all'
+end
+
+get '/v1/trafics/:host' do
+  host = params[:host]
+  redirect "/v1/trafics/#{host}/all"
+end
+
+get '/v1/trafics/:host/:interface' do
+  host = params[:host]
+  interface = params[:interface]
+  redirect "/v1/trafics/#{host}/#{interface}/both"
+end
+
+get '/v1/trafics/:host/:interface/:direction' do
+  response.headers['Access-Control-Allow-Origin'] = '*'
+  content_type :json
+  {'trafics' => trafics()}.to_json
+end
+
 error 404 do
   '404 endpoint not found.'
 end
@@ -87,3 +108,6 @@ def associations(location, band)
   result
 end
 
+def trafics()
+  $zabbix.get_trafics
+end
