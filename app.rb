@@ -20,7 +20,7 @@ get '/' do
 end
 
 get '/v1/version' do
-  version = '1.0.0'
+  version = '1.1.0'
 end
 
 get '/v1/associations' do
