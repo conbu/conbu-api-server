@@ -59,25 +59,25 @@ get '/v1/associations/:location/:band' do
   {'associations' => associations(location, b)}.to_json
 end
 
-get '/v1/trafics' do
-  redirect '/v1/trafics/all'
+get '/v1/traffics' do
+  redirect '/v1/traffics/all'
 end
 
-get '/v1/trafics/:host' do
+get '/v1/traffics/:host' do
   host = params[:host]
-  redirect "/v1/trafics/#{host}/all"
+  redirect "/v1/traffics/#{host}/all"
 end
 
-get '/v1/trafics/:host/:interface' do
+get '/v1/traffics/:host/:interface' do
   host = params[:host]
   interface = params[:interface]
-  redirect "/v1/trafics/#{host}/#{interface}/both"
+  redirect "/v1/traffics/#{host}/#{interface}/both"
 end
 
-get '/v1/trafics/:host/:interface/:direction' do
+get '/v1/traffics/:host/:interface/:direction' do
   response.headers['Access-Control-Allow-Origin'] = '*'
   content_type :json
-  {'trafics' => trafics()}.to_json
+  {'traffics' => traffics()}.to_json
 end
 
 error 404 do
@@ -108,6 +108,6 @@ def associations(location, band)
   result
 end
 
-def trafics()
-  $zabbix.get_trafics
+def traffics()
+  $zabbix.get_traffics
 end
