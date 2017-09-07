@@ -1,3 +1,5 @@
+@ap_name_pattern = "AP[0-9]{1,2}-[0-9]{1,2}"
+
 @location = {}
 @location[:group_dai] = [
   :"AP35-3",

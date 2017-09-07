@@ -7,7 +7,7 @@ require 'sinatra'
 require 'pit'
 require 'json'
 
-require_relative './location/elixirconf2017'
+require_relative './location/cross2017'
 $location = @location
 
 require 'drb/drb'
@@ -37,7 +37,7 @@ get '/v1/associations/:location/:band' do
   band  = params[:band]
   case location
   when 'all'
-  when /AP.[0-9]{1,3}/
+  when /#{@ap_name_pattern}/
   when *$location.keys.map(&:to_s)
   else
     halt 404
