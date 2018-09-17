@@ -61,7 +61,7 @@
   :"AP604",
 ]
 
-@location[:all] = @location[:floor_1] + @location[:ab] + @location[:floor_2] + @location[:floor_3] + @location[:track_4] + @location[:lobby] + @location[:staff] + @location[:floor_6c] + @location[:floor_6d] + @location[:floor_6e]
+@location[:all] = @location[:floor_1] + @location[:ab] + @location[:floor_2] + @location[:floor_3] + @location[:floor_4] + @location[:lobby] + @location[:staff] + @location[:floor_6c] + @location[:floor_6d] + @location[:floor_6e]
 
 @location[:all] = @location[:all].sort
 
