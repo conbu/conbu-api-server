@@ -7,7 +7,7 @@ require 'sinatra'
 require 'pit'
 require 'json'
 
-require_relative './location/pyconjp2018'
+require_relative "./location/#{ENV["EVENTNAME"] || "default"}"
 $location = @location
 
 require 'drb/drb'
