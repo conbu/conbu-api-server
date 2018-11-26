@@ -6,6 +6,11 @@
 require 'sinatra'
 require 'pit'
 require 'json'
+require 'sinatra/cross_origin'
+
+configure do
+  enable :cross_origin
+end
 
 require_relative "./location/#{ENV["EVENTNAME"] || "default"}"
 $location = @location
