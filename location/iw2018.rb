@@ -1,3 +1,5 @@
+@ap_name_pattern = "AP[0-9]{2}"
+
 @location = {}
 @location[:floor_2] = [
   :"AP01",
